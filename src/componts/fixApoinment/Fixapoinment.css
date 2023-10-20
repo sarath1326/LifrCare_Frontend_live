@@ -1,0 +1,188 @@
+
+
+
+  .fix-main{
+    width: 100%;
+    height: 120vh;
+    background-color:rgb(208, 191, 255);
+    padding-top: 50px;
+    display: flex;
+    
+  }
+
+  .fix-cont{
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .fix-box-main{
+
+     width: 600px;
+     height: 730px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+form span{
+    color: red;
+}
+
+
+.fix-title{
+
+     font-size: 20px;
+     text-align: center;
+     background-color:rgb(144, 12, 63);
+     color: white;
+
+}
+
+.fix-opttion{
+    
+    margin-left: 15px;
+    font-size: 17px;
+}
+
+.fix-opt-ans{
+
+    font-weight: bold;
+}
+
+
+.fix-form{
+
+   margin-top: 50px;
+   margin-left: 150px;
+
+}
+
+.fix-input{
+    width: 300px;
+    height: 30px;
+}
+
+.fix-select{
+
+    width: 300px;
+    height: 25px;
+
+}
+
+.fix-radio{
+
+    margin: 5px;
+    
+}
+
+.fix-btn-next{
+
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: brown;
+    color: white;
+    margin-top: 30px;
+    margin-left: 100px;
+
+
+}
+
+
+.fix-pyment-hed{
+
+    font-size: 20px;
+    margin-top: 50px;
+    text-align: center;
+
+    
+
+}
+
+
+.fix-pyment-select{
+
+    margin-top: 70px;
+    margin-left: 200px;
+
+}
+
+.fix-importent{
+
+    width: 100%;
+    height: 50px;
+    background-color: rgb(187, 104, 104);
+    border-radius: 20px;
+    margin-top: 50px;
+    color: white;
+    padding-left: 25px;
+    padding-top: 10px;
+
+}
+
+.fix-pyment-lable{
+
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.fix-pyment-radio{
+
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+
+}
+
+.fix-confo-btn{
+
+     width: 200px;
+     height: 40px;
+     background-color: green;
+     color: white;
+     border:none;
+     border-radius: 10px;
+     margin-left: 200px;
+     margin-top: 150px;
+
+
+}
+
+.fix-pya-div{
+
+     width: 200px;
+     height: 30px;
+     background-color: aqua;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 10px;
+     
+
+}
+
+
+.fix-pya-div2{
+
+    width: 200px;
+     height: 30px;
+     background-color: rgb(68, 32, 250);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 10px;
+    color: white;
+
+
+     
+
+}
+
+
+
+
+

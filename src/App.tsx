@@ -1,26 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Routes,Route} from "react-router-dom"
+import Navebar from './componts/navbar/Navebar';
+import Homepage from './componts/home/Homepage';
+import Booking from './componts/booking/Booking';
+import Fixapoinment from './componts/fixApoinment/Fixapoinment';
+import Home_mang from './Management/Home/Home_mang';
+import OPmanage from './Management/OPmanage/OPmanage';
+
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+     {/* <Navebar /> */}
+
+    <Routes>
+
+      <Route element={<Homepage />} path='/' />
+      
+      <Route element={<Booking />} path='/booking' />
+
+      <Route element={<Fixapoinment />} path='/fixapoi' />
+
+
+
+      {/* management side */}
+
+
+      <Route element={<Home_mang />} path='/homemange'/>
+
+      <Route element={<OPmanage />}  path='/opmange'    />
+
+
+
+
+
+
+    </Routes>
+
+
+
+      
+
+
+
+
+
+
+
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+
