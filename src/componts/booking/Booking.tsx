@@ -2,9 +2,11 @@
 
 import React from 'react'
 import "./Booking.css"
-import  {useState} from "react"
+import Navebar from '../navbar/Navebar'
+import  {useState,useEffect} from "react"
 import axios from "../../Constant/Axiospage"
 import { useNavigate } from 'react-router-dom'
+import  {message} from  'antd'
 
 
 
@@ -12,53 +14,84 @@ function Booking() {
 
   const navigate=useNavigate();
 
-  type resultobj={
-    
-    _id:any
-    department:string
-    availabel:string
-    time:string
   
-  }
+
+  type datatype = {
+
+    availabel: string
+    department: string
+    doctors: string[]
+    time: string
+    _id: string,
+    fees:string
+}
+
+
     
   const [show,setshow]=useState(false)
-  const [opdata,setopdata]=useState<resultobj>()
+  const [opdata,setopdata]=useState<datatype>()
+  const [alldepo,setalldepo]=useState<datatype[]>([])
+  const [doctor,setdoctor]=useState<string[]>()
+ 
+
+  
+
+
+      
+     useEffect(()=>{
+
+       axios("/getalldepo").then((respo)=>{
+
+         let result=respo.data;
+
+         if(result.authfaild){
+
+             navigate('/login');
+             return ;
+         }
+
+         if(result.flag){
+
+          setalldepo(result.data);
+            
+         
+
+         }else{
+
+           message.error("server err ")
+
+         }
+        
+        }).catch(err=>{
+
+           message.error("somthing worng... check your connection ")
+        })
+
+     },[])
+
+
+    
+
+
 
   const check=(dep:string):void=>{
 
 
-     axios("/op_availabel_check?dep="+dep).then((respo)=>{
+          let res=alldepo?.find(obj=>obj.department===dep)
 
-      
-      const result=respo.data
-
-      if(result.flag){
-
-           setopdata(result.data)
-           setshow(true)
-
-
-      }else if(result.err){
-
-        console.log("server err")
-
-      }else{
-
-        console.log("data not found")
-
-      }
-    
-    }).catch(err=>{
-
-      console.log("server err")
-
-     })
+            console.log("filterdata",res)
          
-
-  }
+              setopdata(res)
+              setdoctor(res?.doctors)
+              setshow(true)
+              
+        }
 
 
   return (
+
+    <div>
+      <Navebar />
     <div className='     bkd-main'>
 
        <div className='container  bkd-chec-main'>
@@ -69,10 +102,13 @@ function Booking() {
             <select className='bkd-select'  onChange={(e)=>{check(e.target.value)}}  >
 
                 <option > Select Your Deprtment</option>
-                <option  value={"genaral medicine"} > Genaral Medicine</option>
-                <option value={"cardiolagi"}> Cardiolagy</option>
-                <option value={"pediatrition"}> Pediatrition</option>
-                
+                {
+                  alldepo?.map((obj)=>(
+                     
+                    <option value={obj.department} > {obj.department}</option>
+
+                  ))
+                }
                 </select>
 
 
@@ -90,17 +126,37 @@ function Booking() {
                         <span  className='bkt-availabel-box-hed'>Availabil Day:</span><span className='bkd-data'> {opdata?.availabel}</span><br/>
     
                         <span  className='bkt-availabel-box-hed'>Time:</span><span className='bkd-data'> {opdata?.time}</span><br/>
+
+                        <span className='bkt-availabel-box-hed'> Availabel Doctors :  </span> <br/>
+
+                            
+                       
+                        {
+
+                       
+                          doctor?.map((obj)=>(
+
+                          <>
+                          
+                           
+                          
+                          <span className='bkt-availabel-doctors'>{obj} </span><br/>  </>
+
+                          ))
+                       
+                       }
+    
+                    <span  className='bkt-availabel-box-hed'>consultation fees:</span><span className='bkd-data'> {opdata?.fees}</span><br/>
     
     
-    
-                        <button onClick={()=>{navigate("/fixapoi")}}  className='bkd-btn'> Book Apoinment </button>
+                        <button onClick={()=>{navigate("/fixapoi",{state:opdata})}}  className='bkd-btn'> Book Apoinment </button>
 
                         
 
 
                         </>
 
-                        : <p> helooo </p>
+                        : null
                     }
                     
                     </div>
@@ -137,6 +193,7 @@ function Booking() {
 
 
       
+    </div>
     </div>
   )
 }

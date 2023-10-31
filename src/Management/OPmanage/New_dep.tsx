@@ -19,6 +19,7 @@ function New_dep(props:propstype) {
         doctorname:string
         avilabelday:string
         time:string
+        fees:string
     }
 
     const  initialValues:inputvalues={
@@ -26,7 +27,8 @@ function New_dep(props:propstype) {
         avilabelday:"",
         department:"",
         doctorname:"",
-        time:""
+        time:"",
+        fees:""
     }
 
 
@@ -68,6 +70,8 @@ function New_dep(props:propstype) {
        <div className='pop-new-dep'>
 
         <button  className='pop-new-dep-closbtn' onClick={()=>{props.data()}}>  <AiOutlineClose />  </button>
+
+        <h4 className='pop-new-dep-title'> Add New Department</h4>
 
             <form  onSubmit={handleSubmit}     className='pop-new-dep-form'>
 
@@ -122,6 +126,19 @@ function New_dep(props:propstype) {
                 
                 
                 /><br/><br/>
+
+                <input 
+                placeholder='enter consultation fees'
+                type='text'
+                name='fees'
+                onChange={handleChange}
+                value={values.fees}
+                
+                
+                
+                />
+
+                <br/><br/>
 
                 
                 <button type='submit'  className='pop-new-dep-subbtn'> submit</button>

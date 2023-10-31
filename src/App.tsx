@@ -9,6 +9,8 @@ import Booking from './componts/booking/Booking';
 import Fixapoinment from './componts/fixApoinment/Fixapoinment';
 import Home_mang from './Management/Home/Home_mang';
 import OPmanage from './Management/OPmanage/OPmanage';
+import Login from './componts/login/Login';
+import Signup from './componts/Signup/Signup';
 
 
 
@@ -27,6 +29,10 @@ function App() {
       <Route element={<Booking />} path='/booking' />
 
       <Route element={<Fixapoinment />} path='/fixapoi' />
+
+      <Route element={<Login />} path='/login' />
+
+      <Route element={<Signup />} path='/signup' />
 
 
 

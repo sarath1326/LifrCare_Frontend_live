@@ -1,0 +1,140 @@
+
+
+
+.login-main{
+
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../public/hospita_sig.jpg");
+    background-color: antiquewhite;
+    background-size: cover;
+    background-position: center;
+    opacity: 2;
+    padding-top: 50px;
+   display: flex;
+   justify-content: center;
+
+
+
+}
+
+
+.form-box-main{
+
+    width: 600px;
+    height: 500px;
+    /* border: 4px rgb(183, 180, 180) solid; */
+    border-radius: 10px;
+    
+    
+    
+}
+
+.login-title{
+
+      font-size: 30px;
+      text-align: center;
+      color:rgb(154, 68, 68);
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      background-color: #F7FFF7;
+      margin-bottom: 0;
+      color: rgb(2, 13, 99);
+     
+      }
+
+      .form-main-div{
+        width: 100%;
+        height: 300px;
+        display: grid;
+        justify-content: center;
+        /* padding-top: 100px; */
+       
+        
+      }
+
+      .form-main{
+
+           margin-top: 50px;
+      }
+
+      .log-err-box{
+
+        width: 300px;
+        height: 50px;
+        background-color: white;
+        margin-top: 30px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      .login-err-icon{
+
+          font-size: 20px;
+          color: red;
+          
+
+      }
+
+      .login-err-msg{
+
+        color: red;
+        
+      }
+
+    
+
+
+      .form-main input{
+
+         width: 300px;
+         height: 40px;
+         background-color: transparent;
+         border: 1px solid white;
+         background-color: rgb(16, 208, 16);
+         color: white;
+         
+         
+      }
+
+      .form-main label{
+
+        font-weight: bold;
+      }
+
+      .login-btn{
+
+            width: 150px;
+            height: 40px;
+            border: none;
+            background-color: white ;
+            color: rgb(3, 62, 3);
+            border-radius: 10px;
+            margin-top: 50px;
+            margin-left: 75px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.5s;
+      }
+
+      .login-btn:hover{
+
+         background-color:rgb(3, 62, 3) ;
+         color: white;
+      }
+
+      .login-sig-opt{
+
+        color: red;
+        margin-left: 70px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .sig-err-span{
+
+         color: red;
+         font-weight: bold;
+      }

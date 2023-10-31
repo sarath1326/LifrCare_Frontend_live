@@ -8,6 +8,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import New_dep from './New_dep';
 import { useState } from 'react';
 import Adddoctor from './addDoctor/Adddoctor';
+import {FiRefreshCcw } from "react-icons/fi";
 
 
 
@@ -69,7 +70,29 @@ function OPmanage() {
 
 
 
+                 <div className='mang-op-refr-main'> 
+                 
+                 <span className='mang-op-refr-text'> Refresh</span> 
+                 
+                 <FiRefreshCcw className='mang-op-refr-icon' />    
+                 
+                 </div>  
 
+
+
+                 <div className='mang-op-search-main'>
+
+
+                  <input  className='mang-op-search-input'
+                  type='text'
+                  
+                  />
+
+                  <button> </button>
+
+
+
+                 </div>
 
 
 

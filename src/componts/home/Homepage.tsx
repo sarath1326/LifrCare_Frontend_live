@@ -3,6 +3,7 @@
 import React from 'react'
 import "./Home.css"
 import {useNavigate} from "react-router-dom"
+import Navebar from '../navbar/Navebar'
 
 
 function Homepage() {
@@ -13,7 +14,7 @@ function Homepage() {
     
        <div>
 
-       
+       <Navebar />
 
         <div className='main-home' >
 

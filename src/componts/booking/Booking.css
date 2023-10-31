@@ -14,7 +14,7 @@
 .bkd-checkbox{
 
     width:600px;
-    height: 500px;
+   min-height:100px;
     margin-top: 50px;
     border: 1px solid black;
     background-color: white;
@@ -41,9 +41,9 @@
 .bkd-availabel-box{
 
     width: 500px;
-    height: 200px;
+    min-height: 200px;
     background-color: rgb(2, 6, 60);
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 50px;
     border-radius: 10px;
     padding-top:20px;
@@ -68,10 +68,77 @@
     width: 150px;
     height: 35px;
     border: none;
-    background-color: rgb(0, 66, 37);
+    background-color: rgb(0, 91, 65);
     color: white;
     border-radius: 10px;
     
 }
 
+.bkt-availabel-doc-hed{
 
+   color: white;
+}
+
+.bkt-availabel-doctors{
+
+    color: red;
+    margin-left: 200px;
+}
+
+
+@media(max-width:600px){
+    .bkd-checkbox{
+
+        width: 400px;
+       
+      
+
+    }
+
+    .bkd-select{
+        margin-left: 50px;
+        margin-top: 30px;
+    }
+
+
+    .bkd-availabel-box{
+
+        width: 300px;
+        min-height: 100px;
+        margin-left: 40px;
+     
+    }
+
+    .bkt-availabel-box-hed{
+
+        margin-left: 30px;
+    }
+    .bkt-availabel-doctors{
+
+        color: red;
+        margin-left: 50px;
+    }
+    .bkd-btn{
+        margin-left: 80px;
+    }
+}
+
+
+
+@media (max-width:400px){
+
+    .bkd-select{
+        margin-left: 80px;
+        width: 200px;
+      
+    }
+
+    .bkd-availabel-box{
+
+        margin-left: 25px
+     
+    }
+
+
+
+}
