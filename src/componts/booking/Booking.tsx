@@ -87,6 +87,13 @@ function Booking() {
               
         }
 
+        
+        const bookapoinment=()=>{
+
+            navigate("/fixapoi",{state:opdata})
+          
+          }
+
 
   return (
 
@@ -149,7 +156,7 @@ function Booking() {
                     <span  className='bkt-availabel-box-hed'>consultation fees:</span><span className='bkd-data'> {opdata?.fees}</span><br/>
     
     
-                        <button onClick={()=>{navigate("/fixapoi",{state:opdata})}}  className='bkd-btn'> Book Apoinment </button>
+                        <button onClick={bookapoinment}  className='bkd-btn'> Book Apoinment </button>
 
                         
 

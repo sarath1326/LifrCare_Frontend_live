@@ -7,10 +7,12 @@ import Navebar from '../navbar/Navebar'
 import { useFormik } from 'formik'
 import { validationSchema } from "./Fixapoinmentschema"
 import { message } from "antd"
-import { useLocation ,useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import Pyment from './paymentbox/Pyment'
 import axios from "../../Constant/Axiospage"
+import Swal from 'sweetalert2';
+import { onlinePayment } from "../Razorpya/pyment"
+
 
 
 
@@ -26,7 +28,7 @@ function Fixapoinment() {
         doctors: string[]
         time: string
         _id: string
-        fees:string
+        fees: string
     }
 
 
@@ -37,7 +39,7 @@ function Fixapoinment() {
 
     const location = useLocation();
     const data = location.state;
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -109,21 +111,77 @@ function Fixapoinment() {
                 gender: gender,
                 data: values,
                 department: finddepo?.department,
-                fees:finddepo?.fees
+                fees: finddepo?.fees
             }
 
             axios.post("/conform_booking", data).then((respo) => {
 
-                const result=respo.data;
-                
-                if(result.authfaild){
+                const result = respo.data;
 
-                    navigate("/login");  
-                
-                }else{
+                if (result.authfaild) {
 
-                    message.success("booking is sucssfully...!");
+                    navigate("/login");
 
+                } else if (result.flag) {
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'your Booking successfuly !',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                    navigate("/");
+
+                } else if (result.rez) {
+
+                    onlinePayment(result.razor_oder, (pyment: any, order: any) => {
+
+
+                        const data = {
+                            pyment,
+                            order
+                        }
+
+
+                        axios.post("/razorpya_verification", data).then((respo) => {
+
+                            const pyresult = respo.data
+
+                            if (pyresult.flag) {
+
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'your Booking successfuly !',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                });
+
+                                navigate("/");
+
+                            } else {
+
+
+                                message.error("online pyment not completed")
+
+                            }
+
+                        }).catch(err => {
+
+                            message.error("somthing worng ")
+
+
+                        })
+
+
+                    })
+
+
+                } else {
+
+                    message.error("server err ")
                 }
 
 
@@ -149,343 +207,344 @@ function Fixapoinment() {
 
         <div>
 
-     <Navebar />
+            <Navebar />
 
-        <div className='fix-main'>
+            <div className='fix-main'>
 
-            <div className='container  fix-cont'>
+                <div className='container  fix-cont'>
 
-                {
+                    {
 
-                    nextpage ?
+                        nextpage ?
 
 
 
-                        <div className='fix-box-main'>
+                            <div className='fix-box-main'>
 
-                            <p className='fix-title'> Book Your Apoinment </p>
+                                <p className='fix-title'> Book Your Apoinment </p>
 
 
-                            <span className='fix-opttion'> You choose Department is :</span> <span className='fix-opt-ans'>{finddepo?.department}</span><br />
+                                <span className='fix-opttion'> You choose Department is :</span> <span className='fix-opt-ans'>{finddepo?.department}</span><br />
 
 
 
-                            <hr />
+                                <hr />
 
 
 
 
 
-                            <form className='fix-form' onSubmit={handleSubmit}   >
+                                <form className='fix-form' onSubmit={handleSubmit}   >
 
-                                <input
-                                    className='fix-input'
-                                    placeholder='Enter Patient Name '
-                                    type='text'
-                                    name='patientname'
-                                    id='patientname'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.patientname}
+                                    <input
+                                        className='fix-input'
+                                        placeholder='Enter Patient Name '
+                                        type='text'
+                                        name='patientname'
+                                        id='patientname'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.patientname}
 
 
 
-                                /> <br />
+                                    /> <br />
 
-                                {
-                                    errors.patientname && touched.patientname ?
-
-                                        <> <span>{errors.patientname}    </span> <br /> </>
-
-                                        :
-
-                                        <br />
-                                }
-
-
-
-
-                                <input
-                                    className='fix-input'
-                                    placeholder='Age'
-                                    type='text'
-                                    name='age'
-                                    id='age'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.age}
-
-
-
-                                /><br />
-
-                                {
-                                    errors.age && touched.age ?
-
-                                        <>   <span>{errors.age}    </span> <br /> </>
-
-                                        :
-
-                                        <br />
-                                }
-
-                                <input
-                                    className='fix-input'
-                                    placeholder='Address'
-                                    type='text'
-                                    name='address'
-                                    id='address'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.address}
-
-
-                                /><br />
-
-                                {
-                                    errors.address && touched.address ?
-
-                                        <span>{errors.address}    </span>
-
-                                        :
-
-                                        <br />
-                                }
-
-                                <input
-
-                                    className='fix-input'
-                                    placeholder='Mobile No'
-                                    type='text'
-                                    name='mobile'
-                                    id='mobile'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.mobile}
-
-                                /><br />
-
-                                {
-                                    errors.mobile && touched.mobile ?
-
-                                        <span>{errors.mobile}    </span>
-
-                                        :
-
-                                        <br />
-                                }
-
-
-
-
-                                <input
-
-                                    className='fix-input'
-                                    placeholder='Email id'
-                                    type=' text'
-                                    name='email'
-                                    id='email'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.email}
-
-
-
-
-                                /><br />
-
-                                {
-                                    errors.email && touched.email ?
-
-                                        <span>{errors.email}    </span>
-
-                                        :
-
-                                        <br />
-                                }
-
-                                <label> Genter</label><br />
-
-                                <label> male</label>
-
-                                <input
-                                    className='fix-radio'
-                                    type='radio'
-                                    id='male'
-                                    name='gender'
-                                    onChange={() => { setgender("male") }}
-
-
-
-
-                                />
-
-                                <label> femail</label>
-
-                                <input
-                                    className='fix-radio'
-                                    type='radio'
-                                    id='female'
-                                    name='gender'
-                                    onChange={() => { setgender("female") }}
-
-
-
-
-                                />
-
-                                <label> others</label>
-
-                                <input
-                                    className='fix-radio'
-                                    type='radio'
-                                    id='other'
-                                    name='gender'
-                                    onChange={() => { setgender("other") }}
-
-
-
-                                /><br /><br />
-
-
-
-
-
-                                <input
-                                    className='fix-input'
-                                    placeholder='Enter bystander Name'
-                                    type='text'
-                                    name='bystandername'
-                                    id='bystandername'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.bystandername}
-
-
-                                /><br />
-
-                                {
-                                    errors.bystandername && touched.bystandername ?
-
-                                        <span>{errors.bystandername} </span>
-
-                                        :
-
-                                        <br />
-                                }
-
-
-
-
-                                <select name="doctername" id="doctername" onChange={handleChange} onBlur={handleBlur} value={values.doctername} className='fix-select'>
-
-                                    <option> selcet Doctor </option>
                                     {
-                                        doctor?.map((obj) => (
+                                        errors.patientname && touched.patientname ?
 
-                                            <option value={obj} > {obj} </option>
+                                            <> <span>{errors.patientname}    </span> <br /> </>
 
-                                        ))
+                                            :
 
+                                            <br />
                                     }
 
-                                </select> <br />
-
-                                {
-                                    errors.doctername && touched.doctername ?
-
-                                        <span>{errors.doctername}    </span>
-
-                                        :
-
-                                        <br />
-                                }
-
-                                <input
-                                    className='fix-input'
-                                    placeholder='enter your consulting date'
-                                    type='date'
-                                    name='date'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.date}
-
-                                /><br />
-
-                                {
-                                    errors.date && touched.date ?
-
-                                        <>   <span> {errors.date}    </span><br /> </>
-
-                                        :
-
-                                        <br />
-                                }
-
-                                <button type='submit' className='fix-btn-next'> Next  </button>
 
 
 
-                            </form>
+                                    <input
+                                        className='fix-input'
+                                        placeholder='Age'
+                                        type='text'
+                                        name='age'
+                                        id='age'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.age}
 
 
-                        </div>
 
-                        :
+                                    /><br />
 
-                        <div className='pyment-main'>
+                                    {
+                                        errors.age && touched.age ?
 
-                            <p className='pyment-title'> Choose Pyment Mode </p>
+                                            <>   <span>{errors.age}    </span> <br /> </>
 
-                            <p className='pyment-fees'>consultation fees:{data.fees} </p>
+                                            :
+
+                                            <br />
+                                    }
+
+                                    <input
+                                        className='fix-input'
+                                        placeholder='Address'
+                                        type='text'
+                                        name='address'
+                                        id='address'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.address}
 
 
-                            <div className='pyment-opt-box'>
+                                    /><br />
 
-                                <div className='pyment-online'>
+                                    {
+                                        errors.address && touched.address ?
 
-                                    <p className='pyment-text'> Cash On Pyment</p>
+                                            <span>{errors.address}    </span>
 
-                                    <input className='pyment-radio'
+                                            :
+
+                                            <br />
+                                    }
+
+                                    <input
+
+                                        className='fix-input'
+                                        placeholder='Mobile No'
+                                        type='text'
+                                        name='mobile'
+                                        id='mobile'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.mobile}
+
+                                    /><br />
+
+                                    {
+                                        errors.mobile && touched.mobile ?
+
+                                            <span>{errors.mobile}    </span>
+
+                                            :
+
+                                            <br />
+                                    }
+
+
+
+
+                                    <input
+
+                                        className='fix-input'
+                                        placeholder='Email id'
+                                        type=' text'
+                                        name='email'
+                                        id='email'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email}
+
+
+
+
+                                    /><br />
+
+                                    {
+                                        errors.email && touched.email ?
+
+                                            <span>{errors.email}    </span>
+
+                                            :
+
+                                            <br />
+                                    }
+
+                                    <label> Genter</label><br />
+
+                                    <label> male</label>
+
+                                    <input
+                                        className='fix-radio'
                                         type='radio'
-                                        name='pymentmode'
-                                        value={"COP"}
-                                        onChange={(e) => { setpymentmode(e.target.value) }}
+                                        id='male'
+                                        name='gender'
+                                        onChange={() => { setgender("male") }}
+
+
+
 
                                     />
 
-                                </div>
+                                    <label> femail</label>
 
-                                <div className='pyment-cop'>
-
-                                    <p className='pyment-text-on'> Online Pyment </p>
-
-                                    <input className='pyment-radio'
+                                    <input
+                                        className='fix-radio'
                                         type='radio'
-                                        name='pymentmode'
-                                        value={"ONLINE"}
-                                        onChange={(e) => { setpymentmode(e.target.value) }}
+                                        id='female'
+                                        name='gender'
+                                        onChange={() => { setgender("female") }}
+
+
+
+
                                     />
 
+                                    <label> others</label>
+
+                                    <input
+                                        className='fix-radio'
+                                        type='radio'
+                                        id='other'
+                                        name='gender'
+                                        onChange={() => { setgender("other") }}
+
+
+
+                                    /><br /><br />
+
+
+
+
+
+                                    <input
+                                        className='fix-input'
+                                        placeholder='Enter bystander Name'
+                                        type='text'
+                                        name='bystandername'
+                                        id='bystandername'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.bystandername}
+
+
+                                    /><br />
+
+                                    {
+                                        errors.bystandername && touched.bystandername ?
+
+                                            <span>{errors.bystandername} </span>
+
+                                            :
+
+                                            <br />
+                                    }
+
+
+
+
+                                    <select name="doctername" id="doctername" onChange={handleChange} onBlur={handleBlur} value={values.doctername} className='fix-select'>
+
+                                        <option> selcet Doctor </option>
+                                        {
+                                            doctor?.map((obj) => (
+
+                                                <option value={obj} > {obj} </option>
+
+                                            ))
+
+                                        }
+
+                                    </select> <br />
+
+                                    {
+                                        errors.doctername && touched.doctername ?
+
+                                            <span>{errors.doctername}    </span>
+
+                                            :
+
+                                            <br />
+                                    }
+
+                                    <input
+                                        className='fix-input'
+                                        placeholder='enter your consulting date'
+                                        type='date'
+                                        name='date'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.date}
+
+                                    /><br />
+
+                                    {
+                                        errors.date && touched.date ?
+
+                                            <>   <span> {errors.date}    </span><br /> </>
+
+                                            :
+
+                                            <br />
+                                    }
+
+                                    <button type='submit' className='fix-btn-next'> Next  </button>
+
+
+
+                                </form>
+
+
+                            </div>
+
+                            :
+
+                            <div className='pyment-main'>
+
+                                <p className='pyment-title'> Choose Pyment Mode </p>
+
+                                <p className='pyment-fees'>consultation fees:{data.fees} </p>
+
+
+                                <div className='pyment-opt-box'>
+
+                                    <div className='pyment-online'>
+
+                                        <p className='pyment-text'> Cash On Pyment</p>
+
+                                        <input className='pyment-radio'
+                                            type='radio'
+                                            name='pymentmode'
+                                            value={"COP"}
+                                            onChange={(e) => { setpymentmode(e.target.value) }}
+
+                                        />
+
+                                    </div>
+
+                                    <div className='pyment-cop'>
+
+                                        <p className='pyment-text-on'> Online Pyment </p>
+
+                                        <input className='pyment-radio'
+                                            type='radio'
+                                            name='pymentmode'
+                                            value={"ONLINE"}
+                                            onChange={(e) => { setpymentmode(e.target.value) }}
+                                        />
+
+
+                                    </div>
+
+
 
                                 </div>
+
+                                <p className='pyment-note'>  Note ! </p>
+
+                                <p className='pyment-not-text'> You Will Reach On Time In The Hospital And Visite Reseption And Collect Your File </p>
+
+
+
+                                <button onClick={formsubmit} className='pyment-btn'> Conform Booking </button>
+
 
 
 
                             </div>
 
-                            <p className='pyment-note'>  Note ! </p>
-
-                            <p className='pyment-not-text'> You Will Reach On Time In The Hospital And Visite Reseption And Collect Your File </p>
-
-
-
-                            <button onClick={formsubmit} className='pyment-btn'> Conform Booking </button>
-
-
-
-
-                        </div>
 
 
 
@@ -496,8 +555,17 @@ function Fixapoinment() {
 
 
 
+                    }
 
-                }
+
+
+
+
+
+
+
+
+                </div>
 
 
 
@@ -508,16 +576,6 @@ function Fixapoinment() {
 
 
             </div>
-
-
-
-
-
-
-
-
-
-        </div>
         </div>
     )
 }

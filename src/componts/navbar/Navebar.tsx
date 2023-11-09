@@ -80,6 +80,28 @@ function Navebar() {
 
 
 
+        const gettime=()=>{
+
+            const currTime = new Date().toLocaleTimeString()
+
+           if( currTime < "4:48:19 PM"){
+
+             alert("booking failed")
+           
+           
+            }else{
+
+            alert("booking ok")
+
+
+           }
+
+
+              
+        }
+
+
+
 
 
 
@@ -110,7 +132,7 @@ function Navebar() {
 
                     <p className='second-options' onClick={()=>{navigate("/")}}   > Home </p>
 
-                    <p className='second-options'> Departments </p>
+                    <p className='second-options' onClick={gettime}> Departments </p>
 
                     <p className='second-options'> Doctores</p>
 
@@ -134,19 +156,28 @@ function Navebar() {
 
                                 <div className='nav-deop-div'>
 
-                                    <div className='nav-drop-icon-box'> 
+                                    <div  className='nav-drop-icon-box'> 
 
                                     <VscAccount className='nav-acc' />
                                     <span> {userName} </span>
                                     </div>
 
                                     { 
+                                    
+                                    
                                     flag ?
+                                    <>
                                     <button onClick={()=>{navigate("/login")}} className='nav-log-btn'> Login </button>
+                                    <button className='nav-log-btn'> Signup  </button>
+
+                                    </>
                                     :
                                     <button onClick={logout} className='nav-log-btn'> Logout </button> 
 
                                     }
+
+
+                                    <button className='nav-you-book-btn'>  Your Bookings   </button>
                                    
 
 

@@ -19,15 +19,15 @@ function Sidebar() {
                 </div>
 
 
-                <div className='mang-side-opt-box'>
+                <div className='mang-side-opt-box' onClick={()=>{navigate("/opmange")}}  >
 
-                    <p className='mang-side-opt-text'> Account </p>
+                    <p className='mang-side-opt-text'> OP Booking </p>
 
                 </div>
 
-                <div className='mang-side-opt-box' onClick={()=>{navigate("/opmange")}}>
+                <div className='mang-side-opt-box' >
 
-                    <p className='mang-side-opt-text'> OP Booking   </p>
+                    <p className='mang-side-opt-text'>    </p>
 
 
 
