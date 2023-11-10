@@ -82,6 +82,23 @@ function Fixapoinment() {
     const [gender, setgender] = useState<string>("");
     const [pymentmode, setpymentmode] = useState<string>("");
 
+    function getDateTime() {
+        var now: any = new Date();
+        var year: any = now.getFullYear();
+        var month: any = now.getMonth() + 1;
+        var day: any = now.getDate();
+        
+        if (month.toString().length == 1) {
+            month = '0' + month;
+        }
+        if (day.toString().length == 1) {
+            day = '0' + day;
+        }
+        
+        var dateTime = year + '-' + month + '-' + day
+        return dateTime;
+    }
+
 
 
     const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
@@ -91,15 +108,38 @@ function Fixapoinment() {
 
         onSubmit: (value) => {
 
-            if (gender) {
+            if(gender){
+                
+            const date = getDateTime()
 
-                setnextpage(false);
+            if (value.date === date) {
 
-            } else {
+                const currTime = new Date().toLocaleTimeString()
 
-                message.error("select patient gender");
+               if(currTime < "2:00:pm"){
+
+                setnextpage(false);   
+
+                }else{
+
+                    message.error("This Date Booking Is Closed. Choose Another Day")
+
+                 }
+                
+                } else {
+
+                    setnextpage(false);
+
             }
+
+        }else{
+
+            message.error("select patient gender"); 
+
+
         }
+    
+    }
     })
 
     const formsubmit = () => {

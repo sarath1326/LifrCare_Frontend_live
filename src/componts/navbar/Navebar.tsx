@@ -4,12 +4,13 @@
 import React from 'react'
 import "./Navbar.css"
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useState ,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { VscAccount } from "react-icons/vsc"
 import { useNavigate } from 'react-router-dom';
 import axios from "../../Constant/Axiospage";
-import {message} from "antd"
+import { message } from "antd"
+import { RxCross1 } from "react-icons/rx";
 
 
 
@@ -17,88 +18,88 @@ function Navebar() {
 
     axios.defaults.withCredentials = true;
 
-    
 
-   
 
-  
+
+
+
     const [tongelbox, settongelbox] = useState<boolean>(false);
-    const [userName,setuserName]=useState<string>()
-    const [flag,setflage]=useState<boolean>(true)
+    const [userName, setuserName] = useState<string>()
+    const [flag, setflage] = useState<boolean>(true)
 
-    const navigate=useNavigate();
-
-   
-     useEffect(()=>{
+    const navigate = useNavigate();
 
 
-         axios("/userdata").then((respo)=>{
+    useEffect(() => {
 
-            const result=respo.data ;
 
-             if(result.flag){
+        axios("/userdata").then((respo) => {
 
-                const{name}=result.data
-                
-                setuserName(name); 
+            const result = respo.data;
+
+            if (result.flag) {
+
+                const { name } = result.data
+
+                setuserName(name);
                 setflage(false)
-            
-            }else{
 
-                
+            } else {
+
+
                 setflage(true);
 
-                  
+
             }
-        
-        }).catch(err=>{
 
-            message.error("somthing worng...! check your connection.");  
+        }).catch(err => {
 
-                       
-         });
+            message.error("somthing worng...! check your connection.");
 
-          
 
-     },[])
-
-           
-      const logout=()=>{
-
-            axios.get("/userlogout").then(()=>{
-
-                 navigate(0);
-                   
-            }).catch(err=>{
-
-                   message.error("server error");
-           
-              
-                });
-      
-        }
+        });
 
 
 
-        const gettime=()=>{
+    }, [])
 
-            const currTime = new Date().toLocaleTimeString()
 
-           if( currTime < "4:48:19 PM"){
+    const logout = () => {
 
-             alert("booking failed")
-           
-           
-            }else{
+        axios.get("/userlogout").then(() => {
+
+            navigate(0);
+
+        }).catch(err => {
+
+            message.error("server error");
+
+
+        });
+
+    }
+
+
+
+    const gettime = () => {
+
+        const currTime = new Date().toLocaleTimeString()
+
+        if (currTime < "4:48:19 PM") {
+
+            alert("booking failed")
+
+
+        } else {
 
             alert("booking ok")
 
 
-           }
-
-
-              
         }
+
+
+
+    }
 
 
 
@@ -130,7 +131,7 @@ function Navebar() {
 
                 <div className='container  option-box-main'>
 
-                    <p className='second-options' onClick={()=>{navigate("/")}}   > Home </p>
+                    <p className='second-options' onClick={() => { navigate("/") }}   > Home </p>
 
                     <p className='second-options' onClick={gettime}> Departments </p>
 
@@ -146,51 +147,28 @@ function Navebar() {
 
                     <Dropdown>
                         <Dropdown.Toggle className='nav-drop-btn' variant="success" id="dropdown-basic">
-                           Account
+                            Account
                         </Dropdown.Toggle>
-
                         <Dropdown.Menu>
-                            {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
-
-                                <div className='nav-deop-div'>
-
-                                    <div  className='nav-drop-icon-box'> 
-
+                            <div className='nav-deop-div'>
+                                <div className='nav-drop-icon-box'>
                                     <VscAccount className='nav-acc' />
                                     <span> {userName} </span>
-                                    </div>
-
-                                    { 
-                                    
-                                    
-                                    flag ?
-                                    <>
-                                    <button onClick={()=>{navigate("/login")}} className='nav-log-btn'> Login </button>
-                                    <button className='nav-log-btn'> Signup  </button>
-
-                                    </>
-                                    :
-                                    <button onClick={logout} className='nav-log-btn'> Logout </button> 
-
-                                    }
-
-
-                                    <button className='nav-you-book-btn'>  Your Bookings   </button>
-                                   
-
-
-
-
-
-
                                 </div>
 
+                                {
+                                    flag ?
+                                        <>
+                                            <button onClick={() => { navigate("/login") }} className='nav-log-btn'> Login </button>
+                                            <button className='nav-log-btn'> Signup  </button>
 
+                                        </>
+                                        :
+                                        <button onClick={logout} className='nav-log-btn'> Logout </button>
 
-
-
+                                }
+                                <button onClick={() => { navigate("/show") }} className='nav-you-book-btn'>  Your Bookings   </button>
+                            </div>
                         </Dropdown.Menu>
                     </Dropdown>
 
@@ -199,13 +177,21 @@ function Navebar() {
 
                 <div className='three-bar'>
 
+                      {
+                         tongelbox ?
 
-                    <RxHamburgerMenu className='thre-bar-tongil' onClick={() => { settongelbox(!tongelbox) }} />
+                         <RxCross1 className='thre-bar-tongil' onClick={()=>{settongelbox(false)}} />
+
+                         : 
+
+                    <RxHamburgerMenu className='thre-bar-tongil' onClick={() => { settongelbox(true) }} />
+
+                      }
 
 
                 </div>
 
-                {tongelbox ?
+                { tongelbox ? 
 
                     <>
 
@@ -213,9 +199,36 @@ function Navebar() {
 
                             <div className='container'>
 
-                                <p className='second-options'> Account </p>
+                                {/* <p className='second-options'> Account </p> */}
 
-                                <p className='second-options'> Home </p>
+                                <Dropdown>
+                        <Dropdown.Toggle className='nav-drop-btn' variant="success" id="dropdown-basic">
+                            Account
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <div className='nav-deop-div'>
+                                <div className='nav-drop-icon-box'>
+                                    <VscAccount className='nav-acc' />
+                                    <span> {userName} </span>
+                                </div>
+
+                                {
+                                    flag ?
+                                        <>
+                                            <button onClick={() => { navigate("/login") }} className='nav-log-btn'> Login </button>
+                                            <button className='nav-log-btn'> Signup  </button>
+
+                                        </>
+                                        :
+                                        <button onClick={logout} className='nav-log-btn'> Logout </button>
+
+                                }
+                                <button onClick={() => { navigate("/show") }} className='nav-you-book-btn'>  Your Bookings   </button>
+                            </div>
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+                                <p className='second-options' onClick={() => { navigate("/") }}  > Home </p>
 
                                 <p className='second-options'> Departments </p>
 

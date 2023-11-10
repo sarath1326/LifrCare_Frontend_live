@@ -11,6 +11,7 @@ import Adddoctor from './addDoctor/Adddoctor';
 import { FiRefreshCcw } from "react-icons/fi";
 import { AiOutlineCheck} from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
+import { ImCross } from "react-icons/im";
 import axios from "../../Constant/Axiospage";
 import { Oval } from 'react-loader-spinner'
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -34,13 +35,14 @@ function OPmanage() {
         date: String
         doctername: String
         email: String
-        mobile: String
+        mobile: any
         pyment: String
         gender: String
         fees: String
         marking: Boolean
         bookingid: number
         paystatus: string
+        cancel:boolean
 
 
 
@@ -58,6 +60,7 @@ function OPmanage() {
     const [viewbox, setviewbox] = useState<boolean>(false)
     const [single, setsingle] = useState<fetchdataType>()
     const [input, setinput] = useState<number>()
+    const [color,setcolor]=useState<string>("1px solid red")
 
 
 
@@ -132,16 +135,19 @@ function OPmanage() {
 
     const searchbtn = () => {
 
-        const res = getdata.find((obj) => obj.bookingid === input)
+        const res = getdata.find((obj) =>obj.bookingid===input  ||  obj.mobile.includes(input)  )
 
         if (res) {
 
             setsingle(res)
             setviewbox(true)
 
+            console.log(res.mobile)
+
         } else {
 
             message.error("No Result Found ")
+            
         }
     }
 
@@ -255,6 +261,8 @@ function OPmanage() {
 
                         <input className='mang-op-search-input'
 
+                          placeholder='Booking ID  OR Mobile number Enter and Search '
+
                             type='text'
                             onChange={(
                                 ev: React.ChangeEvent<HTMLInputElement>,
@@ -321,13 +329,20 @@ function OPmanage() {
                                             
 
                                           obj.marking ?
-                                          <div className='mang-op-data-box'>
+                                          
+                                          <div  className='mang-op-data-box'>
 
-                                            <span onClick={() => { bokking_view(obj.bookingid) }} className='mange-op-ptname'> {obj.patientname}   </span><br />
+                                            <span onClick={() => { bokking_view(obj.bookingid) }} className='mange-op-ptname'> {obj.patientname} </span><br />
+                                            
                                             <span onClick={() => { bokking_view(obj.bookingid) }} className='mange-op-ptname'> {obj.bookingid} </span>
-                                            <AiOutlineCheck onClick={()=>{marking(obj.bookingid,index)}} className='mange-mark-icon' />
+                                            {
+                                                obj.cancel ? <ImCross className='mange-de-icon' /> 
+                                                
+                                                : <AiOutlineCheck onClick={()=>{marking(obj.bookingid,index)}} className='mange-mark-icon' />
 
-                                        
+                                            }
+                                             
+                                            
 
 
 
@@ -389,6 +404,8 @@ function OPmanage() {
 
                                         <span> Mobile NO:    </span><br />
 
+                                        <span> Date: </span><br/>
+
                                         <span> Doctor Name:    </span><br />
 
                                         <span> Department  :    </span><br />
@@ -417,6 +434,8 @@ function OPmanage() {
                                         <span> {single?.address} </span><br /><br />
 
                                         <span> {single?.mobile} </span><br />
+
+                                        <span> {single?.date} </span><br/>
 
                                         <span>{single?.doctername} </span><br />
 

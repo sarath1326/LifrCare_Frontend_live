@@ -11,6 +11,7 @@ import Home_mang from './Management/Home/Home_mang';
 import OPmanage from './Management/OPmanage/OPmanage';
 import Login from './componts/login/Login';
 import Signup from './componts/Signup/Signup';
+import Show from './componts/userbookingshow/Show';
 
 
 
@@ -33,6 +34,8 @@ function App() {
       <Route element={<Login />} path='/login' />
 
       <Route element={<Signup />} path='/signup' />
+
+      <Route element={<Show />} path='/show' />
 
 
 
