@@ -66,7 +66,7 @@ function Login() {
               
               }else if(result.err){
 
-                  message.error("server error");
+                  message.error(   "new server error");
              
                 }else{
 
