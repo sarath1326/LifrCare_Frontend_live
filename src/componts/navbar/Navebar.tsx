@@ -81,26 +81,7 @@ function Navebar() {
 
 
 
-    const gettime = () => {
-
-        const currTime = new Date().toLocaleTimeString()
-
-        if (currTime < "4:48:19 PM") {
-
-            alert("booking failed")
-
-
-        } else {
-
-            alert("booking ok")
-
-
-        }
-
-
-
-    }
-
+    
 
 
 
@@ -133,7 +114,7 @@ function Navebar() {
 
                     <p className='second-options' onClick={() => { navigate("/") }}   > Home </p>
 
-                    <p className='second-options' onClick={gettime}> Departments </p>
+                    <p className='second-options' > Departments </p>
 
                     <p className='second-options'> Doctores</p>
 

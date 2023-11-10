@@ -67,6 +67,7 @@ function Login() {
               }else if(result.err){
 
                   message.error(   "new server error");
+                  console.log("backend err",result.errdata)
              
                 }else{
 
