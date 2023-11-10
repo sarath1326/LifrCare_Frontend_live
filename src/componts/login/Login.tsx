@@ -77,7 +77,7 @@ function Login() {
               
               }).catch(err=>{
 
-                message.error("server error");
+                message.error("ax",err);
            });
 
 

@@ -14,4 +14,4 @@ const baseUrl="https://lifecarebackend-439a.onrender.com"
 
 
 
-   export default instans ;
+   export default instans;
