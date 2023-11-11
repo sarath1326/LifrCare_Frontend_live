@@ -10,6 +10,7 @@ import { message } from "antd";
 import { MdError } from "react-icons/md";
 import { useState } from 'react'
 import {validationSchema} from "./Schema"
+import { Oval } from 'react-loader-spinner'
 
 
 
@@ -21,6 +22,8 @@ function Login() {
   const navigate=useNavigate();
   const [errmsg,seterrmsg]=useState<boolean>(false)
   const[msg,setmsg]=useState<string>("")
+  const [loding,setloding]=useState<boolean>(false)
+
 
   axios.defaults.withCredentials = true;
 
@@ -48,7 +51,7 @@ function Login() {
 
       onSubmit:(value)=>{
 
-
+           setloding(true)
            axios.post("/login",value).then((respo)=>{
 
             const result= respo.data;
@@ -66,19 +69,22 @@ function Login() {
               
               }else if(result.err){
 
-                  message.error(   "new server error");
+                  message.error(   " server error");
                   console.log("backend err",result.errdata)
+                  setloding(false)
              
                 }else{
 
                  setmsg("password and email id not valid");
                  seterrmsg(true);
+                 setloding(false)
               
                 }
               
               }).catch(err=>{
 
                 message.error("ax",err);
+                setloding(false)
            });
 
 
@@ -181,8 +187,35 @@ function Login() {
 
                        }
 
+                 {
 
-                       <button type="submit" className='login-btn'> Login  </button>
+                     loding ?
+
+                      <div className='loding-log'>
+                     <Oval
+                    height={30}
+                    width={30}
+                    color="#1A5D1A"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                    ariaLabel='oval-loading'
+                    secondaryColor="#1A5D1A"
+                    strokeWidth={2}
+                    strokeWidthSecondary={2}
+
+
+                />
+
+            </div>
+                
+                :
+
+                <button type="submit" className='login-btn'> Login  </button>
+                  
+                 }
+
+                       
                       
                        <p onClick={()=>{navigate("/signup")}} className='login-sig-opt'> Create New Account ? </p>
 
