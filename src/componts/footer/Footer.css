@@ -1,0 +1,140 @@
+
+
+
+.footer-main{
+
+    width: 100%;
+    height: 50vh;
+    background-color:rgb(5, 5, 58) ;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.footer-top-box{
+    
+    width: 100%;
+   
+    display: flex;
+    flex-wrap: wrap;
+ 
+    
+}
+
+.footer-iner-box{
+
+    width: 100%;
+    height: 350px;
+    
+}
+
+.footer-sub{
+
+    color: rgb(202, 196, 196);
+}
+
+
+
+.footer-emer-main{
+
+    width: 200px;
+    height: 100px;
+    display: flex;
+    margin-left: 100px;
+}
+
+.footer-emer-div{
+
+     width: 40px;
+     height: 40px;
+     background-color:rgb(155, 10, 10);
+     border-radius: 20pc;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    
+}
+
+.footer-emer-icon{
+
+   font-size: 25px;
+   color: rgb(200, 196, 196);
+   
+}
+
+.footer-emer-title{
+
+    margin-left: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(198, 196, 196);
+}
+
+.footer-soci{
+
+    width: 40px;
+    height: 40px;
+ border: 1px solid rgb(205, 202, 202);
+    border-radius: 20pc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    
+
+      
+}
+
+
+.footer-soci-icon{
+
+    color: rgb(194, 194, 199);
+    font-size: 15px;
+}
+
+.footer-soci:hover{
+
+    background-color: rgb(203, 200, 200);
+    .footer-soci-icon{
+
+        color: blue;
+    }
+}
+
+
+.footer-btn{
+
+     width: 200px;
+     height: 40px;
+     border: 1px solid rgb(148, 145, 145);
+     color: rgb(212, 209, 209);
+     background-color: transparent;
+     margin-bottom: 20px;
+     transition: 1s;
+     margin-top: 10px;
+    
+}
+
+.footer-btn:hover{
+
+    background-color: green;
+}
+
+
+@media(max-width:500px){
+
+    .footer-main{
+
+        height: 70vh;
+    }
+}
+
+
+.footer-copy{
+
+    text-align: center;
+    color: rgb(109, 107, 107);
+}
+
+
+
+

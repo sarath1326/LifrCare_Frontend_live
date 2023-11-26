@@ -7,11 +7,15 @@ import Navebar from './componts/navbar/Navebar';
 import Homepage from './componts/home/Homepage';
 import Booking from './componts/booking/Booking';
 import Fixapoinment from './componts/fixApoinment/Fixapoinment';
-import Home_mang from './Management/Home/Home_mang';
-import OPmanage from './Management/OPmanage/OPmanage';
 import Login from './componts/login/Login';
 import Signup from './componts/Signup/Signup';
 import Show from './componts/userbookingshow/Show';
+import IDroom from './componts/videochat/idRoom/IDroom';
+import Chatroom from './componts/videochat/chatRoom/Chatroom';
+import Chatpyment from './componts/videochat/chatpyment/Chatpyment';
+import Department from './componts/department/Department';
+import Doctor from './componts/doctor/Doctor';
+
 
 
 
@@ -37,14 +41,19 @@ function App() {
 
       <Route element={<Show />} path='/show' />
 
+      <Route element={<Chatpyment />} path='/chatpyment' />
+
+      <Route element={<IDroom />} path='/idroom' />
+
+      <Route element={<Chatroom />} path='/chatroom' />
+
+      <Route element={<Department />} path='/departments' />
+
+      <Route element={<Doctor />} path='/doctor' />
 
 
-      {/* management side */}
 
-
-      <Route element={<Home_mang />} path='/homemange'/>
-
-      <Route element={<OPmanage />}  path='/opmange'    />
+    
 
 
 

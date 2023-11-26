@@ -1,0 +1,291 @@
+
+
+
+
+
+
+
+.chatroom_main{
+
+      width: 100%;
+      height: 100vh;
+      background-color:rgb(19, 19, 19) ;
+}
+
+.chatroon-title{
+
+      text-align: center;
+      font-size: 25px;
+      color: white;
+}
+
+.chatroom-sub-title{
+
+    color: white;
+    margin-left: 30px;
+}
+
+.chtroom-ss-btn{
+
+    width:150px;
+    height: 35px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-left: 30px;
+    margin-top: 10px;
+   
+
+
+
+}
+
+.chtroom-lev-btn{
+
+    width:150px;
+    height: 35px;
+    background-color:red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-left: 30px;
+    margin-top: 10px;
+
+     
+}
+
+.video-box-main{
+
+    width: 100%;
+    height: 500px;
+    /* background-color: white; */
+    display: flex;
+    justify-content: center;
+    padding-top:50px;
+    flex-wrap: wrap;
+    
+}
+
+.video_box-doctor{
+
+    width: 300px;
+    height: 300px;
+    /* background-color: blueviolet; */
+
+     
+}
+
+.video-box-my{
+
+    width: 150px;
+    height: 200px;
+    
+    margin-top: 150px;
+    margin-left: 10px;
+}
+
+.video-box-control{
+
+       width: 100%;
+       height: 50px;
+       
+       
+}
+
+.video-box-icon{
+
+      color: white;
+      margin-left: 20px;
+}
+
+.video-box-mesg-btn{
+
+   color: white;
+   position: absolute;
+   right: 20px;
+
+}
+
+.msg-box-main{
+
+
+    width: 350px;
+    height: 400px;
+    background-color:antiquewhite;
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    border-radius:20px;
+    overflow-y:auto;
+    overflow-x: hidden;
+
+    
+
+      
+}
+
+#myid{
+
+      width: 100px;
+     min-height: 30px;
+      overflow-wrap: break-word;
+      background-color: rgb(4, 4, 59);
+      color: white;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-left: 230px;
+      
+      
+}
+
+#doc{
+
+    width: 100px;
+     min-height: 30px;
+      overflow-wrap: break-word;
+      background-color: white;
+      color: black;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-left: 10px;
+
+
+}
+
+
+
+
+
+.msg-box-cl-icon{
+
+     font-size: 25px;
+     color: red;
+     margin-left: 300px;
+     
+}
+.msg-span{
+     color: white;
+     position: absolute;
+     right: 40px;
+    
+}
+
+.msg-iner-box{
+
+    width: 100%;
+    height: 330px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+   
+   
+
+
+}
+
+.msg-input{
+
+    width:270px;
+    margin-left: 20px;
+    border-radius: 10px;
+
+     
+}
+
+.msg-send-icon{
+
+      font-size: 25px;
+      color: green;
+      margin-left:15px;
+}
+
+.msg-box-doc{
+
+     width: 100px;
+    min-height: 30px;
+     background-color: white;
+    border-radius: 10px;
+     margin-top: 10px;
+     margin-left: 10px;
+     overflow-wrap: break-word;
+}
+
+.msg-box-my{
+
+   width: 100px;
+   min-height: 30px;
+    background-color: rgb(3, 3, 71);
+    border-radius: 10px;
+   margin-left: 230px;
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    
+    
+
+     
+     
+    
+}
+
+
+.msg{
+
+    text-align: center;
+
+}
+
+.msg-my{
+
+    text-align: center;
+    color: white;
+   
+}
+
+
+.chatroom-data{
+
+    color: red;
+}
+
+@media(max-width:460px){
+
+       .video-box-my{
+        margin-top: 70px;
+        margin-left: 100px;
+       }
+
+       .video_box-doctor{
+
+        height: 200px;
+       }
+}
+
+.video_box-doctor-big{
+
+    display: none;
+
+   
+}
+
+
+
+
+
+@media(min-width:1000px){
+
+      .video_box-doctor{
+
+          display: none;
+      }
+
+      .video_box-doctor-big{
+
+        display: block;
+      }
+
+     
+
+
+    }
+

@@ -6,7 +6,7 @@
 .main-home{
 
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     background-image: url("../../../public/hompage-bg.jpg");
     background-color: antiquewhite;
     background-size: cover;
@@ -46,6 +46,114 @@
     font-size: 20px;
     
 }
+
+.home-emer-main{
+
+     width: 200px;
+     height: 100px;
+     display: flex;
+}
+
+.home-emer-div{
+
+      width: 40px;
+      height: 40px;
+      background-color:rgb(155, 10, 10);
+      border-radius: 20pc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.home-emer-icon{
+
+    font-size: 25px;
+    color: white;
+    
+}
+
+.emer-title{
+
+     margin-left: 10px;
+     font-size: 17px;
+     font-weight: 500;
+}
+
+.home-contact-div{
+
+     width: 50px;
+     height: 150px;
+   /* background-color: aqua; */
+     position: absolute;
+     right: 20px;
+     position: fixed;
+}
+
+
+
+.home-call-div{
+
+    width: 40px;
+    height: 40px;
+    background-color:rgb(10, 41, 155);
+    border-radius: 20pc;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+
+
+}
+
+.home-call-icon{
+
+
+    font-size: 20px;
+    color: white;
+
+    
+}
+
+.home-email-div{
+
+    width: 40px;
+    height: 40px;
+    background-color:rgb(10, 41, 155);
+    border-radius: 20pc;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+
+}
+
+.home-email-icon{
+
+     font-size: 20px;
+     color: white;
+}
+
+.home-what-div{
+
+    width: 40px;
+    height: 40px;
+    background-color:green;
+    border-radius: 20pc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.home-what-icon{
+
+     font-size: 23px;
+     color: white;
+}
+
 
 
 

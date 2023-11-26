@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom"
+import {SocketProvider} from "./componts/videochat/contextApi/Socket"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +13,13 @@ root.render(
 
   <BrowserRouter>
   <React.StrictMode>
+
+    <SocketProvider>
+    
     <App />
+
+    </SocketProvider>
+   
   </React.StrictMode>
   </BrowserRouter>
 );

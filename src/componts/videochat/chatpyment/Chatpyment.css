@@ -1,0 +1,92 @@
+
+
+
+
+
+
+.chat-pyment-main{
+
+    width: 100%;
+    height: 500px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.chat-pyment-title{
+
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+
+}
+
+.chat-pyment-pyment-box-main{
+
+    width: 600px;
+    height: 300px;
+    background-color: antiquewhite;
+    box-shadow: 0 0 5px rgb(81, 80, 80);
+    padding-top: 30px;
+
+
+}
+
+.chat-pyment-pyment-box-main-title{
+
+      text-align: center;
+      color: red;
+}
+
+.cht-pyment-box-fee{
+
+    margin-left: 30px;
+    margin-top: 50px;
+
+
+}
+
+.cht-pyment-btn{
+
+     width: 150px;
+     height: 40px;
+     background-color: green;
+     color: white;
+     border: none;
+     border-radius: 10px;
+     margin-top: 70px;
+     margin-left: 200px;
+    
+     
+}
+
+
+@media(max-width:600px){
+
+    .chat-pyment-pyment-box-main{
+
+          width: 400px;
+    }
+
+    .cht-pyment-btn{
+
+        margin-left: 120px;
+    }
+}
+
+
+
+@media(max-width:400px){
+
+    .chat-pyment-pyment-box-main{
+
+          width: 300px;
+    }
+
+    .cht-pyment-btn{
+
+        margin-left:70px;
+    }
+}
+
