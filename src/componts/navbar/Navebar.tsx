@@ -211,13 +211,13 @@ function Navebar() {
 
                                 <p className='second-options' onClick={() => { navigate("/") }}  > Home </p>
 
-                                <p className='second-options'> Departments </p>
+                                <p className='second-options' onClick={()=>{navigate("/departments")}}  > Departments </p>
 
-                                <p className='second-options'> Doctores</p>
+                                <p className='second-options' onClick={()=>{navigate("/doctor")}} > Doctores</p>
 
-                                <p className='second-options'> Book Appoinment </p>
+                                <p className='second-options' onClick={() => { navigate("/booking") }} > Book Appoinment </p>
 
-                                <p className='second-options'> Online Consultation </p>
+                                <p className='second-options' onClick={()=>{navigate("/chatpyment")}} > Online Consultation </p>
 
                                 <p className='second-options'> Other Services</p>
 
