@@ -244,7 +244,7 @@ setmsglist([...msglist,data_doc])
 
             <button className='chtroom-lev-btn' onClick={leve_session}  > Leve Session  </button>
 
-            :  <button className='chtroom-lev-btn' onClick={leve_session}  > Leve Session  </button>
+            :  null
 
 
         }
@@ -313,7 +313,7 @@ setmsglist([...msglist,data_doc])
           <div className='video_box-doctor' >
 
 
-            <Reactplayer url={mystream} width={300} height={300} playing muted />
+            <Reactplayer url={doctorstream} width={300} height={300} playing muted />
 
 
           </div>
