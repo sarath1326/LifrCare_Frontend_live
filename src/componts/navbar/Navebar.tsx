@@ -118,7 +118,7 @@ function Navebar() {
 
                     <p className='second-options' onClick={()=>{navigate("/doctor")}}  > Doctores</p>
 
-                    <p className='second-options'> Book Appoinment </p>
+                    <p className='second-options' onClick={() => { navigate("/booking") }}   > Book Appoinment </p>
 
                     <p className='second-options' onClick={()=>{navigate("/chatpyment")}} > Online Consultation </p>
 

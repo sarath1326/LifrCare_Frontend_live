@@ -65,6 +65,9 @@ function Login() {
 
               setmsg("email not valied");
               seterrmsg(true);
+              setloding(false)
+              value.email=''
+              value.password=''
               
               
               }else if(result.err){

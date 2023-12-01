@@ -15,6 +15,7 @@ import Chatroom from './componts/videochat/chatRoom/Chatroom';
 import Chatpyment from './componts/videochat/chatpyment/Chatpyment';
 import Department from './componts/department/Department';
 import Doctor from './componts/doctor/Doctor';
+import Levepage from './componts/videochat/levepage/Levepage';
 
 
 
@@ -50,6 +51,8 @@ function App() {
       <Route element={<Department />} path='/departments' />
 
       <Route element={<Doctor />} path='/doctor' />
+
+      <Route element={<Levepage />} path='/levepage' />
 
 
 

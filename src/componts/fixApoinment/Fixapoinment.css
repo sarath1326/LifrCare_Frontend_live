@@ -323,7 +323,13 @@ form span{
 }
 
 
+@media(max-width:500px){
 
+       .pyment-btn{
+
+         margin-left: 80px;
+       }
+}
 
 
 

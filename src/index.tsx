@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom"
-import {SocketProvider} from "./componts/videochat/contextApi/Socket"
+import { BrowserRouter } from "react-router-dom"
+import { SocketProvider, Roomidprovider } from "./componts/videochat/contextApi/Socket"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,15 +12,21 @@ const root = ReactDOM.createRoot(
 root.render(
 
   <BrowserRouter>
-  <React.StrictMode>
+    <React.StrictMode>
 
-    <SocketProvider>
-    
-    <App />
+      <SocketProvider>
+        <Roomidprovider>
 
-    </SocketProvider>
-   
-  </React.StrictMode>
+          <App />
+
+
+
+        </Roomidprovider>
+
+
+      </SocketProvider>
+
+    </React.StrictMode>
   </BrowserRouter>
 );
 

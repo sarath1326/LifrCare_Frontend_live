@@ -7,7 +7,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import {message} from "antd"
 import { useContext } from 'react'
-import {SocketContext} from "../contextApi/Socket"
+import {SocketContext,RoomidContext} from "../contextApi/Socket"
 
 
 
@@ -21,6 +21,9 @@ function IDroom() {
     const [id,setid]=useState('')
 
     const {Socket}=useContext(SocketContext)
+
+    const { setroomidpass}=useContext(RoomidContext)
+
 
    
 
@@ -54,7 +57,9 @@ function IDroom() {
                     Socket.emit("user_join_req",{name:name,roomid:roomid})
                     
                     
-                    navigate("/chatroom",{state:{roomid:roomid}} )
+                    navigate("/chatroom")
+
+                    setroomidpass(roomid)
                 
                 }
     }

@@ -116,7 +116,9 @@ function Fixapoinment() {
 
                 const currTime = new Date().toLocaleTimeString()
 
-               if(currTime < "2:00:pm"){
+                console.log("curenttime",currTime)
+
+               if( currTime < "2:00:pm"){
 
                 setnextpage(false);   
 
