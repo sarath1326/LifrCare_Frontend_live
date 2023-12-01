@@ -5,84 +5,131 @@ import "./Chatpyment.css"
 import Navebar from '../../navbar/Navebar'
 import axios from "../../../Constant/Axiospage"
 import { useNavigate } from 'react-router-dom'
-import {online_consult_onlinePayment} from "../../Razorpya/Chatpyment"
-import {message} from "antd"
+import { online_consult_onlinePayment } from "../../Razorpya/Chatpyment"
+import { message } from "antd"
+import { useState,useEffect } from 'react'
+import { Oval } from 'react-loader-spinner'
 
 
 function Chatpyment() {
 
 
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
-    
-    const pyment=()=>{
-
-
-    axios.post("/online_pyment",{fee:100}).then((res)=>{
-
-        const result=res.data
+    const [flag, setflag] = useState(false)
+    const [loding, setloding] = useState<boolean>(true)
 
 
-        if(result.authfaild){
-
-           navigate("/login")
-
-        }else if(result.razor){
-
-            online_consult_onlinePayment(result.razor_oderid,(pyment:any,order:any)=>{
-
-                const data = {
-                    pyment,
-                    order
-                }
+    useEffect(()=>{
 
 
-                axios.post("/pyment_verification",data).then((respo)=>{
+        axios("/videocall_control_check").then((respo)=>{
 
-                    const result=respo.data
+            const result=respo.data
 
-                    if(result.flag){
+            if(result.flag){
 
-                          navigate('/idroom')
-                    
-                        }else{
+                setloding(false)
+                setflag(true)
+            
+            }else if(result.err){
 
-                             message.error(" server err")
+                  message.error("server err")
+            
+                }else{
+
+                    setloding(false)
+
+
+            }
+
+              
+        }).catch(err=>{
+
+            message.error("somthing worng ")
+
+              
+        })
+
+
+    },[])
+
+
+
+
+
+
+
+
+
+    const pyment = () => {
+
+
+        axios.post("/online_pyment", { fee: 100 }).then((res) => {
+
+            const result = res.data
+
+
+            if (result.authfaild) {
+
+                navigate("/login")
+
+            } else if (result.razor) {
+
+                online_consult_onlinePayment(result.razor_oderid, (pyment: any, order: any) => {
+
+                    const data = {
+                        pyment,
+                        order
+                    }
+
+
+                    axios.post("/pyment_verification", data).then((respo) => {
+
+                        const result = respo.data
+
+                        if (result.flag) {
+
+                            navigate('/idroom')
+
+                        } else {
+
+                            message.error(" server err")
 
                         }
-                    
-                    }).catch(err=>{
 
-                   message.error("somthing worng !")
-                  
-                      
+                    }).catch(err => {
+
+                        message.error("somthing worng !")
+
+
+                    })
+
+
+
+
+
+
+
+
                 })
 
 
-                
+            }
 
-                  
-                 
 
-                  
-            })
 
-              
-        }
 
-        
 
-       
-        
 
-         
-    }).catch(err=>{
 
-           
-    })
+        }).catch(err => {
 
-      
- }
+
+        })
+
+
+    }
 
 
 
@@ -92,28 +139,79 @@ function Chatpyment() {
 
             <Navebar />
 
-            <p className='chat-pyment-title' > Online Consultation Pyment Process   </p>
+            {
+                flag ?
+
+                    <p className='chat-pyment-title' > Online Consultation Pyment Process   </p>
+
+                    : null
+
+
+
+            }
+
+
 
             <div className='chat-pyment-main'  >
 
                 <div className='chat-pyment-pyment-box-main' >
 
-                    <p className='chat-pyment-pyment-box-main-title' > Availabele Video And Chat Intraction With Doctor   </p>
+                    {
 
-                    <p className='cht-pyment-box-fee' > Doctor Consultation Fee is  : 100 RS  </p>
+                        loding ?
+
+                            <div className='chat-pyment-spin' >
+                            <Oval
+                                height={40}
+                                width={40}
+                                color="#004225"
+                                wrapperStyle={{}}
+                                wrapperClass=""
+                                visible={true}
+                                ariaLabel='oval-loading'
+                                secondaryColor="#637E76"
+                                strokeWidth={2}
+                                strokeWidthSecondary={2}
+
+
+                            />
+
+                            </div>
 
 
 
 
 
-                    <button className='cht-pyment-btn' onClick={pyment}  > Pay Start Call  </button>
+                            :
+
+                            flag ?
+
+
+
+                            <>
+
+                                <p className='chat-pyment-pyment-box-main-title' > Availabele Video And Chat Intraction With Doctor   </p>
+
+                                <p className='cht-pyment-box-fee' > Doctor Consultation Fee is  : 100 RS  </p>
+
+                                <button className='cht-pyment-btn' onClick={pyment}  > Pay Start Call  </button>
+
+
+                            </>
+
+                            :
+
+                            <p className='cht-pyment-msg' > Doctors not avilabel this time. pleace try later  </p>
+
+
+
+
+                    }
+
+
 
 
                 </div>
-
-
-
-
 
             </div>
 

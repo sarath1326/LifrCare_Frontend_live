@@ -40,6 +40,9 @@ function Show() {
      const [getdata,setgetdata]=useState<getDatatype[]>([])
      const [loding,setloding]=useState<boolean>(true)
      const[empty,setempty]=useState<boolean>(false)
+     const [reflag,setreflag]=useState<boolean>(false)
+     const [bookingid,setbookingid]=useState<string>('')
+     const [redate,setredate]=useState<string>('')
 
      useEffect(()=>{
 
@@ -113,6 +116,42 @@ function Show() {
                 })
              
       }
+
+
+      const reschadule_form=(id:string,index:number)=>{
+
+                     setbookingid(id)
+                     setreflag(true)
+                    
+                    
+                    }
+
+
+         const reschadule_sav=()=>{
+
+            axios.post("/reschadule_date",{id:bookingid,date:redate}).then((respo)=>{
+
+                const result=respo.data
+
+                 if(result.flag){
+
+                     message.success("Date Reschaduled")
+                     setreflag(false)
+                 }else{
+
+                       message.error("server err")
+                       setreflag(false)
+                 }
+
+                    
+            }).catch(err=>{
+
+                   message.error(" somthing worng ")
+                   setreflag(false)
+            })
+
+          
+         }           
 
    
      
@@ -193,46 +232,44 @@ function Show() {
     
                         <div className='btn-box'>
                             <button className='can-btn' onClick={()=>{cancel(obj._id,index)}} > Cancel </button> <br />
-                            <button className='re-btn'> Reshadule </button>
+                            <button className='re-btn' onClick={()=>{reschadule_form(obj._id,index) }}     > Reshadule </button>
                         </div>
                     </div>
-
-
-
-                    ))
-
-               
-
                     
+                    ))
+                    }
+                 </div>
+
+                  
+                  {
+
+                    reflag ?
+
+                    <div className='data-re-form' >
+
+                    <input type='date'
+
+                    onChange={(e)=>{setredate(e.target.value)}}
+                   
+                    
+                    /><br/>
+
+                    <button className='data-resform-btn-can' onClick={()=>{setreflag(false)}}  > Cancel  </button> <button className='data-resform-btn-sav' onClick={reschadule_sav}  > Save   </button>
 
 
-                }
+
+                 </div>
+
+                 :null
 
 
+
+
+
+
+
+                  }
                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-
 
 
 

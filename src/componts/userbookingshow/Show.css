@@ -25,6 +25,7 @@
       border-radius: 5px;
       margin-right: 10px;
       background-color: white;
+      border-radius: 10px;
 
 
 }
@@ -106,10 +107,13 @@
       margin-top: 100px;
  }
 
- @media(max-width:395px){
+ /* @media(max-width:395px){
 
      .show-data-box-main{
-         height: 240px;
+         height: 230px;
+         width: 400px;
+         margin-right: 0;
+         
      }
 
      .re-btn{
@@ -121,4 +125,109 @@
           margin-left: 70px;
       
      }
+} */
+
+
+.data-re-form{
+
+       width: 500px;
+       height: 100px;
+       background-color: aquamarine;
+       position: absolute;
+       top: 260px;
+       left: 500px;
+       border-radius: 10px;
+       box-shadow: 0 0 5px #646363;
+       padding-top: 20px;
+       padding-left: 100px;
 }
+
+.data-re-form input{
+
+      width: 300px;
+}
+
+.data-resform-btn-can{
+
+        width: 100px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: red;
+        color: white;
+        margin-top: 10px;
+        margin-left: 50px;
+}
+
+.data-resform-btn-sav{
+
+     width: 100px;
+     height: 30px;
+     border: none;
+     border-radius: 5px;
+     background-color: green;
+     color: white;
+     margin-top: 10px;
+}
+
+
+
+
+@media(max-width:395px){
+
+     .show-data-box-main{
+         height: 230px;
+         width: 400px;
+         margin-right: 0;
+         
+     }
+
+     .re-btn{
+          margin-left: 70px;
+     }
+
+     .can-btn{
+
+          margin-left: 70px;
+      
+     }
+
+     .data-re-form{
+
+          width: 300px;
+          left: 40px;
+          padding-left: 50px;
+     }
+
+
+     .data-re-form input{
+
+          width: 200px;
+    }
+
+    .data-resform-btn-can{
+      margin-left: 0px;
+    }
+
+    .data-resform-btn-sav{
+
+       margin-left: 0px;
+    }
+
+     
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+

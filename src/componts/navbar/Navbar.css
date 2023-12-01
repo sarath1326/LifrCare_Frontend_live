@@ -99,8 +99,9 @@
 .thre-bar-tongil{
 
     margin-right: 30px;
-    font-size: 35px;
+    font-size: 30px;
     color: white;
+    transition: 0.5s;
 }
 
 .togil-box-main{
@@ -109,6 +110,8 @@
     height: 500px;
     background-color: #1A5D1A;
     position: absolute;
+    transition: all 1s ease-in;
+   
     
 }
 
@@ -122,6 +125,7 @@
     margin-left: 20px;
     font-size: 15px;
     cursor: pointer;
+    font-weight: 500;
     
 }
 
