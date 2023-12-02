@@ -46,6 +46,7 @@ function Chatroom() {
   const [msglist,setmsglist]=useState<msglisttype[]>([])
   const [video, setvideo] = useState<boolean>(true)
   const [audio,setaudio]=useState<boolean>(true)
+  const [waiting,setwaiting]=useState<boolean>(true)
 
   const connectionRef:any = useRef();
 
@@ -94,6 +95,7 @@ function Chatroom() {
       const handil_call_accept = () => {
          
           setdoctor("doctor")
+          setwaiting(false)
   }
 
 
@@ -200,7 +202,7 @@ setmsglist([...msglist,data_doc])
           
            setflag(true)
            setdoctorstream(null)
-           navigate("levepage")
+           navigate("/levepage")
 
              
       }
@@ -220,12 +222,30 @@ setmsglist([...msglist,data_doc])
           ansbtn ?
             <button className='chtroom-ss-btn' onClick={call_answer}> Accept Session  </button>
 
-            : < div  className='alert'    > <LuAlertTriangle style={{color:"orange" ,fontSize:"20px"  }}  />  
+            :  null
+        }
+
+        {
+
+          waiting ?
+
+          < div  className='alert' > <LuAlertTriangle style={{color:"orange" ,fontSize:"20px"  }}  />  
             
             <span style={{color:"white"}}  > Sorry.. Doctor Consulting A Patient. Please Wait This Page  </span>     
             
-            </div>  
+            </div> 
+
+            : null
+
+
+
+
         }
+
+
+
+
+
 
         {
 
@@ -242,7 +262,7 @@ setmsglist([...msglist,data_doc])
 
 
         <FaMessage className='video-box-mesg-btn' onClick={() => { setmsg_box_con(true) }} />
-        <span className='msg-span' > Message    </span>
+        <span className='msg-span' >  Chat    </span>
 
         {
 
@@ -312,7 +332,7 @@ setmsglist([...msglist,data_doc])
           <div className='video_box-doctor-big' >
 
 
-            <Reactplayer url={doctorstream} width={500} height={500} playing muted />
+            <Reactplayer url={doctorstream} width={500} height={400} playing muted />
 
 
           </div>

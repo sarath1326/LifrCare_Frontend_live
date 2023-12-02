@@ -322,6 +322,11 @@ form span{
      font-weight: bold;
 }
 
+.pyment-loding{
+
+    margin-left: 80px;
+}
+
 
 @media(max-width:500px){
 

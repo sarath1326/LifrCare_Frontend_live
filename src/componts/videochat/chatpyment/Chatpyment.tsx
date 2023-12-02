@@ -201,7 +201,18 @@ function Chatpyment() {
 
                             :
 
+                            <>
+
                             <p className='cht-pyment-msg' > Doctors not avilabel this time. pleace try later  </p>
+
+                            <div className='cht-pyment-img-div'  >
+
+                                <img className='cht-img' src='../hospitallogo.jpeg'  />
+
+
+                            </div>
+
+                            </>
 
 
 

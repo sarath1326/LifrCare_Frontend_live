@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react'
 import axios from "../../Constant/Axiospage"
 import Swal from 'sweetalert2';
 import { onlinePayment } from "../Razorpya/pyment"
+import { Oval } from 'react-loader-spinner'
 
 
 
@@ -34,6 +35,7 @@ function Fixapoinment() {
 
     const [finddepo, setfinddepo] = useState<select_department_type>();
     const [doctor, setdoctor] = useState<string[]>();
+    const [loding,setloding]=useState<boolean>(false)
 
 
 
@@ -87,14 +89,14 @@ function Fixapoinment() {
         var year: any = now.getFullYear();
         var month: any = now.getMonth() + 1;
         var day: any = now.getDate();
-        
+
         if (month.toString().length == 1) {
             month = '0' + month;
         }
         if (day.toString().length == 1) {
             day = '0' + day;
         }
-        
+
         var dateTime = year + '-' + month + '-' + day
         return dateTime;
     }
@@ -108,43 +110,45 @@ function Fixapoinment() {
 
         onSubmit: (value) => {
 
-            if(gender){
-                
-            const date = getDateTime()
+            if (gender) {
 
-            if (value.date === date) {
+                const date = getDateTime()
 
-                const currTime = new Date().toLocaleTimeString()
+                if (value.date === date) {
 
-                console.log("curenttime",currTime)
+                    const currTime = new Date().toLocaleTimeString()
 
-               if( currTime < "2:00:pm"){
+                    console.log("curenttime", currTime)
 
-                setnextpage(false);   
+                    if (currTime < "2:00:pm") {
 
-                }else{
+                        setnextpage(false);
 
-                    message.error("This Date Booking Is Closed. Choose Another Day")
+                    } else {
 
-                 }
-                
+                        message.error("This Date Booking Is Closed. Choose Another Day")
+
+                    }
+
                 } else {
 
                     setnextpage(false);
 
+                }
+
+            } else {
+
+                message.error("select patient gender");
+
+
             }
 
-        }else{
-
-            message.error("select patient gender"); 
-
-
         }
-    
-    }
     })
 
     const formsubmit = () => {
+
+        setloding(true)
 
         if (pymentmode) {
 
@@ -580,7 +584,39 @@ function Fixapoinment() {
 
 
 
-                                <button onClick={formsubmit} className='pyment-btn'> Conform Booking </button>
+                                <button onClick={formsubmit} className='pyment-btn'>
+
+                                    {
+                                        loding ?
+
+                                        <div className='pyment-loding' >
+
+                                        <Oval
+                                               height={30}
+                                               width={30}
+                                               color="#1A5D1A"
+                                               wrapperStyle={{}}
+                                               wrapperClass=""
+                                               visible={true}
+                                               ariaLabel='oval-loading'
+                                               secondaryColor="#EEF5FF"
+                                               strokeWidth={2}
+                                               strokeWidthSecondary={2}
+       
+       
+                                           />
+                                           
+                                           
+                                           </div>   
+
+                                           : <p> Conform Booking  </p>
+                                    }
+
+                                
+
+
+
+                                </button>
 
 
 
