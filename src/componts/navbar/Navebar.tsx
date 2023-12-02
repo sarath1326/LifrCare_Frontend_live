@@ -102,7 +102,7 @@ function Navebar() {
                 <div>
 
                     <h3 className='title-top-nav'> Life Care </h3>
-                    <span className='sub-title-top-nav'> Hospital and Resurch Center </span>
+                    <span className='sub-title-top-nav'> Hospital and Reaearch Center </span>
 
                 </div>
 
