@@ -267,10 +267,10 @@ function Fixapoinment() {
 
                             <div className='fix-box-main'>
 
-                                <p className='fix-title'> Book Your Apoinment </p>
+                                <p className='fix-title'> Book Your Appoinment </p>
 
 
-                                <span className='fix-opttion'> You choose Department is :</span> <span className='fix-opt-ans'>{finddepo?.department}</span><br />
+                                <span className='fix-opttion'> Your choosed Department is :</span> <span className='fix-opt-ans'>{finddepo?.department}</span><br />
 
 
 

@@ -190,11 +190,11 @@ function Chatpyment() {
 
                             <>
 
-                                <p className='chat-pyment-pyment-box-main-title' > Availabele Video And Chat Intraction With Doctor   </p>
+                                <p className='chat-pyment-pyment-box-main-title' > Available Video And Chat Intraction With Doctor   </p>
 
                                 <p className='cht-pyment-box-fee' > Doctor Consultation Fee is  : 100 RS  </p>
 
-                                <button className='cht-pyment-btn' onClick={pyment}  > Pay Start Call  </button>
+                                <button className='cht-pyment-btn' onClick={pyment}  > Pay & Start Call  </button>
 
 
                             </>
@@ -203,7 +203,7 @@ function Chatpyment() {
 
                             <>
 
-                            <p className='cht-pyment-msg' > Doctors not avilabel this time. pleace try later  </p>
+                            <p className='cht-pyment-msg' > Doctors not available this time. pleace try later  </p>
 
                             <div className='cht-pyment-img-div'  >
 

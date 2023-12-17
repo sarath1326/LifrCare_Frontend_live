@@ -21,7 +21,7 @@ function Footer() {
                         <div>
 
                             <h3 className='title-top-nav'> Life Care </h3>
-                            <span className='footer-sub'> Hospital and Resurch Center </span>
+                            <span className='footer-sub'> Hospital and Research Center </span>
 
                         </div>
 

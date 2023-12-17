@@ -29,7 +29,7 @@
 
 .footer-sub{
 
-    color: rgb(202, 196, 196);
+    color: rgb(87, 85, 85);
 }
 
 
@@ -57,7 +57,7 @@
 .footer-emer-icon{
 
    font-size: 25px;
-   color: rgb(200, 196, 196);
+   color: rgb(143, 139, 139);
    
 }
 
@@ -66,14 +66,14 @@
     margin-left: 10px;
     font-size: 17px;
     font-weight: 500;
-    color: rgb(198, 196, 196);
+    color: rgb(87, 85, 85);
 }
 
 .footer-soci{
 
     width: 40px;
     height: 40px;
- border: 1px solid rgb(205, 202, 202);
+ border: 1px solid rgb(103, 102, 102);
     border-radius: 20pc;
     display: flex;
     justify-content: center;
@@ -87,7 +87,7 @@
 
 .footer-soci-icon{
 
-    color: rgb(194, 194, 199);
+    color: rgb(135, 135, 141);
     font-size: 15px;
 }
 
@@ -106,7 +106,7 @@
      width: 200px;
      height: 40px;
      border: 1px solid rgb(148, 145, 145);
-     color: rgb(212, 209, 209);
+     color: rgb(67, 65, 65);
      background-color: transparent;
      margin-bottom: 20px;
      transition: 1s;
@@ -132,7 +132,7 @@
 .footer-copy{
 
     text-align: center;
-    color: rgb(109, 107, 107);
+    color: rgb(74, 73, 73);
 }
 
 

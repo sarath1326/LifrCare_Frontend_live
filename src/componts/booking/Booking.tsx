@@ -108,7 +108,7 @@ function Booking() {
 
             <select className='bkd-select'  onChange={(e)=>{check(e.target.value)}}  >
 
-                <option > Select Your Deprtment</option>
+                <option > Select Your Department</option>
                 {
                   alldepo?.map((obj)=>(
                      
@@ -130,7 +130,7 @@ function Booking() {
 
                         <span  className='bkt-availabel-box-hed'> Department:</span><span className='bkd-data'> {opdata?.department}</span><br/>
 
-                        <span  className='bkt-availabel-box-hed'>Availabil Day:</span><span className='bkd-data'> {opdata?.availabel}</span><br/>
+                        <span  className='bkt-availabel-box-hed'>Available Day:</span><span className='bkd-data'> {opdata?.availabel}</span><br/>
     
                         <span  className='bkt-availabel-box-hed'>Time:</span><span className='bkd-data'> {opdata?.time}</span><br/>
 
@@ -153,7 +153,7 @@ function Booking() {
                        
                        }
     
-                    <span  className='bkt-availabel-box-hed'>consultation fees:</span><span className='bkd-data'> {opdata?.fees}</span><br/>
+                    <span  className='bkt-availabel-box-hed'>consultation fee:</span><span className='bkd-data'> {opdata?.fees}</span><br/>
     
     
                         <button onClick={bookapoinment}  className='bkd-btn'> Book Apoinment </button>

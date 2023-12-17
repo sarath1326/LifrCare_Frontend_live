@@ -16,6 +16,7 @@ import Chatpyment from './componts/videochat/chatpyment/Chatpyment';
 import Department from './componts/department/Department';
 import Doctor from './componts/doctor/Doctor';
 import Levepage from './componts/videochat/levepage/Levepage';
+import Contact from './componts/contact/Contact';
 
 
 
@@ -53,6 +54,8 @@ function App() {
       <Route element={<Doctor />} path='/doctor' />
 
       <Route element={<Levepage />} path='/levepage' />
+
+      <Route element={<Contact />} path='/contact'  />
 
 
 

@@ -102,7 +102,7 @@ function Navebar() {
                 <div>
 
                     <h3 className='title-top-nav'> Life Care </h3>
-                    <span className='sub-title-top-nav'> Hospital and Reaearch Center </span>
+                    <span className='sub-title-top-nav'> Hospital and Research Center </span>
 
                 </div>
 
@@ -124,7 +124,7 @@ function Navebar() {
 
                     <p className='second-options'> Other Services</p>
 
-                    <p className='second-options'> Contacts </p>
+                    <p className='second-options' onClick={()=>{navigate("/contact")}}  > Contacts </p>
 
                     <Dropdown>
                         <Dropdown.Toggle className='nav-drop-btn' variant="success" id="dropdown-basic">
