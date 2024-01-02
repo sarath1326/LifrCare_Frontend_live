@@ -539,7 +539,7 @@ function Fixapoinment() {
 
                             <div className='pyment-main'>
 
-                                <p className='pyment-title'> Choose Pyment Mode </p>
+                                <p className='pyment-title'> Choose Payment Mode </p>
 
                                 <p className='pyment-fees'>consultation fees:{data.fees} </p>
 
@@ -548,7 +548,7 @@ function Fixapoinment() {
 
                                     <div className='pyment-online'>
 
-                                        <p className='pyment-text'> Cash On Pyment</p>
+                                        <p className='pyment-text'> Cash On Payment</p>
 
                                         <input className='pyment-radio'
                                             type='radio'

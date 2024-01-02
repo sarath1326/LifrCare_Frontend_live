@@ -232,7 +232,7 @@ function Show() {
     
                         <div className='btn-box'>
                             <button className='can-btn' onClick={()=>{cancel(obj._id,index)}} > Cancel </button> <br />
-                            <button className='re-btn' onClick={()=>{reschadule_form(obj._id,index) }}     > Reshadule </button>
+                            <button className='re-btn' onClick={()=>{reschadule_form(obj._id,index) }}     > Reschedul </button>
                         </div>
                     </div>
                     

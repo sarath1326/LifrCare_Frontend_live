@@ -142,7 +142,7 @@ function Chatpyment() {
             {
                 flag ?
 
-                    <p className='chat-pyment-title' > Online Consultation Pyment Process   </p>
+                    <p className='chat-pyment-title' > Online Consultation Payment Process   </p>
 
                     : null
 
