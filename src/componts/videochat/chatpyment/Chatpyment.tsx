@@ -203,7 +203,7 @@ function Chatpyment() {
 
                             <>
 
-                            <p className='cht-pyment-msg' > Doctors not available this time. pleace try later  </p>
+                            <p className='cht-pyment-msg' > Doctors not available this time. please try later  </p>
 
                             <div className='cht-pyment-img-div'  >
 
