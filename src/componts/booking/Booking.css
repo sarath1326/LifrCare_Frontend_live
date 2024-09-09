@@ -62,7 +62,7 @@
 
 .bkd-data{
 
-    color: red;
+    color: gold;
 }
 
 .bkd-btn{
@@ -86,8 +86,9 @@
 
 .bkt-availabel-doctors{
 
-    color: red;
+    color: gold;
     margin-left: 200px;
+    
 }
 
 
@@ -127,6 +128,39 @@
         margin-left: 80px;
     }
 }
+
+
+.avail{
+
+    /* padding: 2px;
+   background: rgb(5, 112, 5);
+   color: wheat;
+   border-radius: 10px;
+   margin-left: 5px;
+   font-size: 15px; */
+
+   color: rgb(6, 192, 6);
+   margin-left: 5px;
+
+   
+   
+}
+
+.unavail{
+
+    /* background: red;
+    color: wheat;
+    border-radius: 10px;
+    margin-left: 3px; */
+    /* color: rgba(234, 203, 23, 0.922);
+    margin-left: 5px; */
+
+    color: red;
+    margin-left: 5px;
+    
+}
+
+
 
 
 

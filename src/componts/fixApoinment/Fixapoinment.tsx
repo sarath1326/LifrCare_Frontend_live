@@ -26,7 +26,7 @@ function Fixapoinment() {
 
         availabel: string
         department: string
-        doctors: string[]
+        doctors: any
         time: string
         _id: string
         fees: string
@@ -34,7 +34,7 @@ function Fixapoinment() {
 
 
     const [finddepo, setfinddepo] = useState<select_department_type>();
-    const [doctor, setdoctor] = useState<string[]>();
+    const [doctor, setdoctor] = useState<any>();
     const [loding,setloding]=useState<boolean>(false)
 
 
@@ -485,11 +485,13 @@ function Fixapoinment() {
 
                                         <option> selcet Doctor </option>
                                         {
-                                            doctor?.map((obj) => (
+                                            doctor?.map((obj:any) => obj.available? (
 
-                                                <option value={obj} > {obj} </option>
+                                             <option value={obj.doctorName} > {obj.doctorName} </option>
 
-                                            ))
+                                            ) : null
+                                        
+                                        )
 
                                         }
 

@@ -20,7 +20,7 @@ function Booking() {
 
     availabel: string
     department: string
-    doctors: string[]
+    doctors: any
     time: string
     _id: string,
     fees:string
@@ -31,7 +31,7 @@ function Booking() {
   const [show,setshow]=useState(false)
   const [opdata,setopdata]=useState<datatype>()
   const [alldepo,setalldepo]=useState<datatype[]>([])
-  const [doctor,setdoctor]=useState<string[]>()
+  const [doctor,setdoctor]=useState<any>()
  
 
   
@@ -134,20 +134,30 @@ function Booking() {
     
                         <span  className='bkt-availabel-box-hed'>Time:</span><span className='bkd-data'> {opdata?.time}</span><br/>
 
-                        <span className='bkt-availabel-box-hed'> Availabel Doctors :  </span> <br/>
+                        <span className='bkt-availabel-box-hed'>  Doctors :  </span> <br/>
 
                             
                        
                         {
 
                        
-                          doctor?.map((obj)=>(
+                          doctor?.map((obj:any)=>(
+
+                           
 
                           <>
                           
                            
                           
-                          <span className='bkt-availabel-doctors'>{obj} </span><br/>  </>
+                          <span className='bkt-availabel-doctors'>{obj.doctorName} </span>
+
+                          {obj.available ? <span className='avail' > [ available ]  </span> : <span className='unavail' >[ unavailable ]  </span>  }
+                          
+                          
+                          <br/> 
+                          
+                          
+                           </>
 
                           ))
                        
