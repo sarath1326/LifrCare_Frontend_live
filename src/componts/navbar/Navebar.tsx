@@ -141,7 +141,7 @@ function Navebar() {
                                     flag ?
                                         <>
                                             <button onClick={() => { navigate("/login") }} className='nav-log-btn'> Login </button>
-                                            <button className='nav-log-btn'> Signup  </button>
+                                            <button onClick={()=>{navigate("/signup")}}  className='nav-log-btn'> Signup  </button>
 
                                         </>
                                         :
