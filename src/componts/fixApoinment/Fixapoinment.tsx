@@ -35,7 +35,7 @@ function Fixapoinment() {
 
     const [finddepo, setfinddepo] = useState<select_department_type>();
     const [doctor, setdoctor] = useState<any>();
-    const [loding,setloding]=useState<boolean>(false)
+    const [loding, setloding] = useState<boolean>(false)
 
 
 
@@ -110,42 +110,58 @@ function Fixapoinment() {
 
         onSubmit: (value) => {
 
-            if (gender) {
+            let curent_data = new Date()
+            let checkDate = curent_data.getDate() // get curent data 
+            let formDtae = parseInt(value.date.slice(-2)) // get form date 
 
-                const date = getDateTime()
+            // check user select date 
 
-                if (value.date === date) {
+            if (formDtae >= checkDate) {
 
-                    const currTime = new Date().toLocaleTimeString()
+                if (gender) {
 
-                    console.log("curenttime", currTime)
+                    const date = getDateTime()
 
-                    if (currTime < "2:00:pm") {
+                    if (value.date === date) {
 
-                        setnextpage(false);
+                        const currTime = new Date().toLocaleTimeString()
+
+                        console.log("curenttime", currTime)
+
+                        if (currTime < "2:00:pm") {
+
+                            setnextpage(false);
+
+                        } else {
+
+                            message.error("This Date Booking Is Closed. Choose Another Day")
+
+                        }
 
                     } else {
 
-                        message.error("This Date Booking Is Closed. Choose Another Day")
+                        setnextpage(false);
 
                     }
 
                 } else {
 
-                    setnextpage(false);
+                    message.error("select patient gender");
+
 
                 }
 
+
+
             } else {
 
-                message.error("select patient gender");
-
-
+                message.error("this date booking is closed")
             }
-
         }
     })
 
+    
+    
     const formsubmit = () => {
 
         setloding(true)
@@ -485,13 +501,13 @@ function Fixapoinment() {
 
                                         <option> selcet Doctor </option>
                                         {
-                                            doctor?.map((obj:any) => obj.available? (
+                                            doctor?.map((obj: any) => obj.available ? (
 
-                                             <option value={obj.doctorName} > {obj.doctorName} </option>
+                                                <option value={obj.doctorName} > {obj.doctorName} </option>
 
                                             ) : null
-                                        
-                                        )
+
+                                            )
 
                                         }
 
@@ -591,30 +607,30 @@ function Fixapoinment() {
                                     {
                                         loding ?
 
-                                        <div className='pyment-loding' >
+                                            <div className='pyment-loding' >
 
-                                        <Oval
-                                               height={30}
-                                               width={30}
-                                               color="#1A5D1A"
-                                               wrapperStyle={{}}
-                                               wrapperClass=""
-                                               visible={true}
-                                               ariaLabel='oval-loading'
-                                               secondaryColor="#EEF5FF"
-                                               strokeWidth={2}
-                                               strokeWidthSecondary={2}
-       
-       
-                                           />
-                                           
-                                           
-                                           </div>   
+                                                <Oval
+                                                    height={30}
+                                                    width={30}
+                                                    color="#1A5D1A"
+                                                    wrapperStyle={{}}
+                                                    wrapperClass=""
+                                                    visible={true}
+                                                    ariaLabel='oval-loading'
+                                                    secondaryColor="#EEF5FF"
+                                                    strokeWidth={2}
+                                                    strokeWidthSecondary={2}
 
-                                           : <p> Conform Booking  </p>
+
+                                                />
+
+
+                                            </div>
+
+                                            : <p> Conform Booking  </p>
                                     }
 
-                                
+
 
 
 
